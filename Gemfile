@@ -48,3 +48,6 @@ end
 
 # For login
 gem 'devise'
+
+# For bootstrap
+gem 'bootstrap-sass'
