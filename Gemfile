@@ -45,3 +45,6 @@ group :development do
   gem 'spring'
 end
 
+
+# For login
+gem 'devise'
