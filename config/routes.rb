@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :items
+    
   devise_for :users, skip: [:registrations], path_names: {sign_in: "login", sign_out: "logout"}
   as :user do
     get 'users/edit' => 'users/registrations#edit', :as => 'edit_user_registration'
@@ -7,6 +7,11 @@ Rails.application.routes.draw do
     patch '/users(.:format)' => 'usres/registrations#update'
   end
 
+  resources :items do
+    member do
+      get 'image'
+    end
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

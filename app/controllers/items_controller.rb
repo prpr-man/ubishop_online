@@ -25,6 +25,10 @@ class ItemsController < ApplicationController
   # POST /items.json
   def create
     @item = Item.new(item_params)
+    if image = params[:item][:image]
+      @item.image = image.read
+      @item.image_type = image.content_type
+    end
 
     respond_to do |format|
       if @item.save
@@ -41,6 +45,11 @@ class ItemsController < ApplicationController
   # PATCH/PUT /items/1.json
   def update
     respond_to do |format|
+      if image = params[:item][:image]
+        @item.image = image.read
+        @item.image_type = image.content_type
+      end
+      
       if @item.update(item_params)
         format.html { redirect_to @item, notice: 'Item was successfully updated.' }
         format.json { render :show, status: :ok, location: @item }
@@ -61,6 +70,12 @@ class ItemsController < ApplicationController
     end
   end
 
+  # GET /item/i/image
+  def image
+    @item = Item.find(params[:id])
+    send_data @item.image, type: @item.image_type, disposition: :inline
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_item
@@ -69,6 +84,6 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:name, :price, :description, :category, :barcode, :image, :image_type)
+      params.require(:item).permit(:name, :price, :description, :category, :barcode)
     end
 end
