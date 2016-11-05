@@ -24,7 +24,7 @@
         <td><%= item.description %></td>
         <td><%= item.category %></td>
         <td><%= item.barcode %></td>
-        <td><%= item.image %></td>
+        <td><%= image_tag image_item_path(item.id) %></td>
         <td><%= item.image_type %></td>
         <td><%= link_to 'Show', item %></td>
         <td><%= link_to 'Edit', edit_item_path(item) %></td>
