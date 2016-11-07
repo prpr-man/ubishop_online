@@ -51,3 +51,5 @@ gem 'devise'
 
 # For bootstrap
 gem 'bootstrap-sass'
+# For font awesome
+gem 'font-awesome-rails'
