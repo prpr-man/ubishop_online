@@ -1,0 +1,17 @@
+<% if notice.present? %>
+  <div class="col-md-6 col-md-offset-3 message">
+    <div class="alert alert-dismissable alert-success">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <p><%= notice %></p>
+    </div>
+  </div>
+<% end %>
+
+<% if alert.present? %>
+  <div class="col-md-6 col-md-offset-3 message">
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <p><%= alert %></p>
+    </div>
+  </div>
+<% end %>

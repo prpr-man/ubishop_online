@@ -48,8 +48,11 @@ end
 
 # For login
 gem 'devise'
+gem 'devise-i18n'
+gem 'devise-i18n-views'
 
 # For bootstrap
 gem 'bootstrap-sass'
+
 # For font awesome
 gem 'font-awesome-rails'
