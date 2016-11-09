@@ -5,6 +5,7 @@ class CreateItems < ActiveRecord::Migration
       t.integer :price, null: false, default: 0
       t.text :description
       t.string :category, null: false, default: ""
+      t.integer :stock, null: false, default: 0
       t.string :barcode, null: false, default: ""
       t.binary :image
       t.string :image_type

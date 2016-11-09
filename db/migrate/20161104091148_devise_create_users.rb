@@ -28,6 +28,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       ## User info
       t.string   :name      ,null: false, default: ""
       t.string   :barcode   ,null: false, default: ""
+      t.integer  :deposit   ,null: false, default: 0
 
       ## Lockable
       # t.integer  :failed_attempts, default: 0, null: false # Only if lock strategy is :failed_attempts
