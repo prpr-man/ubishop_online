@@ -56,3 +56,7 @@ gem 'bootstrap-sass'
 
 # For font awesome
 gem 'font-awesome-rails'
+
+# For vue.js
+gem 'vuejs-rails'
+
