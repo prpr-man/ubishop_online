@@ -15,4 +15,5 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require vue
+//= require matchheight/jquery.matchHeight-min
 //= require_tree .

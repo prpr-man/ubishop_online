@@ -60,3 +60,5 @@ gem 'font-awesome-rails'
 # For vue.js
 gem 'vuejs-rails'
 
+# For bower
+gem 'bower-rails'

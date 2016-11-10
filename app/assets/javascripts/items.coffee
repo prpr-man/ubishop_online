@@ -3,20 +3,33 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).on 'ready page:load', ->
+
   app = new Vue(
     el: "#items"
     data: items: []
+    created: ->
+      this.fetch()
+      return
     methods:
       fetch: ->
-        $.ajax
+        that = this
+        $.ajax(
+          type: 'GET'
           url: '/items.json'
           success: (res) ->
-            app.items = res
+            that.items = res
             return
+          complete: ->
+            that.$nextTick ->
+              $('.thumbnail').matchHeight()
+              return
+            return
+        )
         return
 
       image_path: (item) ->
         "/items/" + item.id + "/image"
   )
 
-  app.fetch()
+
+  return
