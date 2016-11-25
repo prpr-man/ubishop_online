@@ -32,32 +32,33 @@
 
 
 <!-- Page Content -->
-<div class="container">
+<div id="shop" class="container">
   <div class="row">
     <div class="col-md-3">
       <p class="lead">Shop Name</p>
       <div class="list-group">
-        <a href="#" class="list-group-item">Category 1</a>
-        <a href="#" class="list-group-item">Category 2</a>
-        <a href="#" class="list-group-item">Category 3</a>
+        <a href="#" class="list-group-item" v-for="category in categories">{{category}}</a>
       </div>
     </div>
     
     <div class="col-md-9">
       <div id="items" class="row">
-        <div class="col-sm-4 col-lg-4 col-md-4" v-for="item in items">
+        <div class="item col-sm-4 col-lg-4 col-md-4" v-for="(item, index) in items">
           <div class="thumbnail">
             <img v-bind:src="image_path(item)">
             <div class="caption">
               <h4 class="pull-right">¥{{item.price}}</h4>
-              <h4><a href="#">{{item.name}}</a></h4>
-              <p v-if="item.stock > 0"><span class="label label-info">在庫: {{item.stock}}個</span></p>
-              <p v-else><span class="label label-danger">売り切れ</span></p>
+              <h4><a href="#detail" role="button" data-toggle="modal" data-target="#detail" v-on:click="show(item)">{{item.name}}</a></h4>
+              <h4 class="stock" v-if="item.stock > 0"><span class="label label-success">{{item.stock}}個</span></h4>
+              <h4 class="stock" v-else><span class="label label-danger">売り切れ</span></h4>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+
+  <%= render 'modal' %>
+
 </div>
 <!-- /.container -->

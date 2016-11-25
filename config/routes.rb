@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-    
+  
   devise_for :users, skip: [:registrations], path_names: {sign_in: "login", sign_out: "logout"}
   as :user do
     get 'users/edit' => 'users/registrations#edit', :as => 'edit_user_registration'

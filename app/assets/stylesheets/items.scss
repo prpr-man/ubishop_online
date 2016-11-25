@@ -6,4 +6,28 @@ body {
   padding-top: 70px;
 }
 
+.caption {
+  overflow: hidden;
+}
 
+.thumbnail img {
+  width: 100%;
+}
+
+.thumbnail {
+  padding: 0;
+  position: relative;
+}
+
+.stock {
+  height: 5px;
+}
+
+.stock .label {
+  position: absolute;
+  bottom: 10px;
+}
+
+.modal-title .label {
+  height: 100%;
+}

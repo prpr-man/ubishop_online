@@ -5,10 +5,19 @@
 $(document).on 'ready page:load', ->
 
   app = new Vue(
-    el: "#items"
-    data: items: []
+    el: "#shop"
+    data: 
+      items: []
+      categories: []
+      show_item: null
     created: ->
       this.fetch()
+      return
+    updated: ->
+      images = $('.thumbnail img')
+      images[images.length-1].onload = ->
+        $('.thumbnail').matchHeight()
+        return
       return
     methods:
       fetch: ->
@@ -17,19 +26,39 @@ $(document).on 'ready page:load', ->
           type: 'GET'
           url: '/items.json'
           success: (res) ->
-            that.items = res
-            return
-          complete: ->
-            that.$nextTick ->
-              $('.thumbnail').matchHeight()
-              return
+            that.items = JSON.parse(res['items'])
+            that.categories = JSON.parse(res['categories'])
             return
         )
+        return
+      
+      show: (item) ->
+        this.show_item = item
         return
 
       image_path: (item) ->
         "/items/" + item.id + "/image"
-  )
 
+      update: (item) ->
+        item.stock = item.stock - $('#order').val()
+        that = this
+        $.ajax(
+          type: 'PUT'
+          data: item: item
+          url: '/items/' + item.id + '.json'
+          success: (res) ->
+            console.log('ok')
+            return
+          error: (res) ->
+            console.log('error')
+            return
+        )
+        return
+
+
+
+
+
+  )
 
   return
