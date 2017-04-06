@@ -57,7 +57,7 @@ class ItemsController < ApplicationController
       
       if @item.update(item_params)
         format.html { redirect_to @item, notice: 'Item was successfully updated.' }
-        format.json { render json: @items.to_json(except: [:image, :image_type]), status: :ok }
+        format.json { render json: {message: t("activerecord.successful.purchase"), status: :ok } }
       else
         format.html { render :edit }
         format.json { render json: @item.errors, status: :unprocessable_entity }

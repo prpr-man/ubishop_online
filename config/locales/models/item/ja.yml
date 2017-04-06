@@ -1,0 +1,23 @@
+ja:
+  activerecord:
+    models:
+      item: "商品"
+    attributes:
+      item:
+        name: "品名"
+        price: "価格"
+        description: "商品説明"
+        category: "カテゴリ"
+        stock: "在庫"
+        barcode: "バーコード"
+    errors:
+      models:
+        item: 
+          attributes:
+            stock:
+              greater_than_or_equal_to: "在庫がありません"
+    successful:
+      purchase: "購入しました"
+      add: "補填しました"
+      
+
